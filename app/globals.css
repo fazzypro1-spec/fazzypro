@@ -104,3 +104,25 @@ img{max-width:100%;display:block}
 
 footer{margin-top:auto;text-align:center;color:var(--soft);font-size:12.5px;padding:20px 0}
 footer b{color:var(--lime)}
+
+/* ============ Landing (página inicial) ============ */
+.landing{min-height:100vh;display:flex;flex-direction:column;background:
+  radial-gradient(120% 90% at 100% 0%, var(--glow-a), transparent 45%),
+  radial-gradient(120% 90% at 0% 100%, var(--glow-b), transparent 45%), var(--bg)}
+.landing-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:56px 24px;gap:10px}
+.landing-logo{width:96px;height:96px;border-radius:26px;background:linear-gradient(135deg,var(--lime),var(--lime2));display:grid;place-items:center;color:#10150A;font-weight:900;font-size:34px;box-shadow:var(--shadow);letter-spacing:-1px}
+.landing-hero h1{font-size:46px;line-height:1.05;margin-top:22px;letter-spacing:-1px}
+.landing-hero h1 em{color:var(--lime);font-style:normal}
+.landing-hero .tagline{color:var(--muted);font-size:17px;max-width:560px;line-height:1.5;margin-top:4px}
+.landing-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:26px;width:100%;max-width:520px}
+.landing-cta a{flex:1 1 200px}
+.landing-dots{color:var(--soft);font-size:13px;margin-top:14px}
+.landing-features{width:100%;max-width:880px;margin:0 auto;padding:26px 20px 60px}
+.landing-features h2{text-align:center;margin-bottom:22px;font-size:24px}
+.landing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.feature{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.feature .f-ico{width:44px;height:44px;border-radius:12px;background:var(--lime-soft);display:grid;place-items:center;color:var(--lime);margin-bottom:14px}
+.feature b{font-size:16px}
+.feature p{color:var(--muted);font-size:14px;line-height:1.5;margin-top:6px}
+.landing-foot{padding:26px;border-top:1px solid var(--line);text-align:center;color:var(--soft);font-size:13px}
+@media(max-width:560px){.landing-hero h1{font-size:34px}.landing-cta{flex-direction:column}.landing-cta a{flex:1 1 auto}}

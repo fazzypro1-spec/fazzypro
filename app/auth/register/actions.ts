@@ -18,6 +18,7 @@ export async function createAccount(formData: FormData) {
   if (password !== password2) return redirect('/auth/register?erro=As senhas não coincidem');
 
   // Anti-duplicata de e-mail: o próprio Supabase impede e-mail repetido no signUp.
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -27,6 +28,9 @@ export async function createAccount(formData: FormData) {
         via: 'email',
         name: '',
       },
+      // Onde o link de confirmação deve levar o usuário (callback do app).
+      // Sem isso, o Supabase usa o "Site URL" padrão e pode dar 404.
+      emailRedirectTo: `${siteUrl}/auth/callback?role=${role}`,
     },
   });
 
@@ -38,7 +42,13 @@ export async function createAccount(formData: FormData) {
   }
 
   // Caso o projeto exija confirmação de e-mail:
-  redirect('/auth/register?mensagem=Verifique seu e-mail para confirmar a conta.');
+  redirect(
+    '/auth/register?mensagem=' +
+      encodeURIComponent(
+        'Quase lá! Enviamos um link de confirmação para o seu e-mail. ' +
+          'Clique nele para ativar a conta e depois complete seu perfil.',
+      ),
+  );
 }
 
 // Etapa 2 — completa o perfil (CPF anti-duplicata + dados de endereço).

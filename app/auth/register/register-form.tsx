@@ -7,6 +7,7 @@ import { useState } from 'react';
 export default function RegisterForm() {
   const params = useSearchParams();
   const erro = params.get('erro');
+  const mensagem = params.get('mensagem');
   const [role, setRole] = useState<'cliente' | 'pro'>('cliente');
 
   return (
@@ -19,6 +20,7 @@ export default function RegisterForm() {
         <p className="auth-sub">Você completa seu perfil depois. É rápido.</p>
 
         {erro && <div className="error">{erro}</div>}
+        {mensagem && <div className="success">{mensagem}</div>}
 
         <form
           action={async (fd) => {
